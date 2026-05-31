@@ -38,7 +38,9 @@ export default function ReceiptPage({ params }: Props) {
 
     useEffect(() => {
       const fetchOrder = () => {
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/orders/${id}`)
+          fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/orders/${id}`, {
+              headers: { 'ngrok-skip-browser-warning': 'true' },
+          })
           .then((res) => res.json())
           .then((data) => {
             setOrder(data);

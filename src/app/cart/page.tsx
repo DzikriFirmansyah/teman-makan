@@ -22,7 +22,10 @@ export default function CartPage() {
     
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/orders`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { 
+            "Content-Type": "application/json",
+            'ngrok-skip-browser-warning': 'true',
+          },
           body: JSON.stringify({
             tableNumber: tableNumber || "00",
             items: items.map((ci) => ({

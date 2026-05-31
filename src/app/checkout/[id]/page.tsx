@@ -16,11 +16,14 @@ export default function CheckoutPage({ params }: Props) {
 
   const handleSimulatePaid = async () => {
     try {
-      await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/orders/${ORDER_ID}/pay`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ paymentMethod: "QRIS" }),
-      });
+        await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/orders/${ORDER_ID}/pay`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                'ngrok-skip-browser-warning': 'true',
+            },
+            body: JSON.stringify({ paymentMethod: "QRIS" }),
+        })
       clearCart();
       router.push(`/receipt/${ORDER_ID}`);
     } catch {

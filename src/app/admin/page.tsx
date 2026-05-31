@@ -45,7 +45,9 @@ export default function AdminPage() {
   const fetchOrders = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/orders`);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/orders`, {
+          headers: { 'ngrok-skip-browser-warning': 'true' },
+        })
       const data = await res.json();
       setOrders(data.sort((a: Order, b: Order) => b.id - a.id));
     } catch {
@@ -78,9 +80,12 @@ export default function AdminPage() {
   const handleComplete = async (orderId: number) => {
     try {
       await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/orders/${orderId}/complete`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-      });
+          method: "PATCH",
+          headers: { 
+            "Content-Type": "application/json",
+            'ngrok-skip-browser-warning': 'true',
+          },
+        })
       setSelectedOrder(null);
       fetchOrders();
     } catch {

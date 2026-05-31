@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // src/services/menuData.ts
 // ============================================================
 
@@ -8,7 +8,11 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
 // Fetch menu dari backend API
 export async function fetchMenu(): Promise<MenuItem[]> {
-    const res = await fetch(`${API_URL}/api/menu`);
+    const res = await fetch(`${API_URL}/api/menu`, {
+        headers: {
+            'ngrok-skip-browser-warning': 'true',  // ← tambah ini
+        },
+    });
     const data = await res.json();
 
     // Map data dari backend ke format MenuItem frontend

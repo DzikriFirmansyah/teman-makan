@@ -22,7 +22,9 @@ export default function ReceiptIndexPage() {
 
   useEffect(() => {
     const table = tableNumber || "";
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/orders?table=${table}`)
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/orders?table=${table}`, {
+          headers: { 'ngrok-skip-browser-warning': 'true' },
+      })
       .then((res) => res.json())
       .then((data) => {
         setOrders(data);

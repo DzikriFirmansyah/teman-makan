@@ -2,7 +2,7 @@
 
 import { QRCodeSVG } from "qrcode.react";
 
-const BASE_URL = "http://192.168.1.26:3000";
+const BASE_URL = "https://teman-makan.vercel.app";
 
 const tables = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"];
 

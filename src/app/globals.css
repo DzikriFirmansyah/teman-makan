@@ -1,0 +1,78 @@
+/* src/styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --bg: #F5F9FF;              /* Putih kebiruan — latar utama */
+  --bg-card: #FFFFFF;         /* Putih murni — kartu/panel */
+  --bg-dark: #0A1628;         /* Navy gelap — splash screen */
+  --accent: #00AEFF;          /* Biru cerah — tombol, harga, CTA */
+  --accent-light: #E0F4FF;    /* Biru muda — background badge/tag */
+  --accent-mid: #33BFFF;      /* Biru medium — hover, variasi */
+  --text: #1A1A1A;            /* Hitam lembut — teks utama */
+  --text-muted: #6B7280;      /* Abu sedang — teks deskripsi */
+  --text-light: #9CA3AF;      /* Abu terang — placeholder, hint */
+  --border: rgba(0,0,0,0.08);
+  --border-strong: rgba(0,0,0,0.15);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow: 0 2px 16px rgba(0,174,255,0.06);
+  --shadow-card: 0 4px 24px rgba(0,174,255,0.10);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  background: var(--bg);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Wrapper — semua halaman max 430px, tengah di desktop */
+.mobile-wrapper {
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: var(--bg);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Scrollbar hidden */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { scrollbar-width: none; }
+
+/* Page transition */
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-enter { animation: pageIn 0.25s ease forwards; }
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bounceIn {
+  0%   { opacity: 0; transform: scale(0.3); }
+  50%  { opacity: 1; transform: scale(1.08); }
+  70%  { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}

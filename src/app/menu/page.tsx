@@ -61,6 +61,29 @@ export default function MenuPage() {
   const popular: MenuItem[] = [];
   const rest = filtered;
 
+  function SkeletonCard() {
+  return (
+    <div style={{
+      display: "flex", gap: 14, alignItems: "center",
+      background: "var(--bg-card)",
+      border: "1px solid var(--border)",
+      borderRadius: "var(--radius)",
+      padding: 14, marginBottom: 10,
+    }}>
+      {/* Thumbnail skeleton */}
+      <div className="skeleton" style={{ width: 80, height: 80, borderRadius: "var(--radius-sm)", flexShrink: 0 }} />
+
+      {/* Info skeleton */}
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
+        <div className="skeleton" style={{ height: 16, width: "60%", borderRadius: 4 }} />
+        <div className="skeleton" style={{ height: 12, width: "90%", borderRadius: 4 }} />
+        <div className="skeleton" style={{ height: 12, width: "70%", borderRadius: 4 }} />
+        <div className="skeleton" style={{ height: 14, width: "30%", borderRadius: 4 }} />
+      </div>
+    </div>
+  );
+}
+
   return (
     <main style={{
       height: "100vh",  
@@ -248,27 +271,36 @@ export default function MenuPage() {
 
         {/* MENU LIST — ikut scroll bersama di atas */}
         <div style={{ padding: "16px 20px 90px" }}>
-          {popular.length > 0 && (
+          {loading ? (
+            // Tampilkan 5 skeleton card saat loading
             <>
-              <SectionTitle>Populer</SectionTitle>
-              {popular.map((item) => <MenuCard key={item.id} item={item} />)}
+              {Array.from({ length: 5 }).map((_, i) => (
+                <SkeletonCard key={i} />
+              ))}
             </>
-          )}
-          {rest.length > 0 && (
+          ) : (
             <>
-              {popular.length > 0 && <SectionTitle>Lainnya</SectionTitle>}
-              {rest.map((item) => <MenuCard key={item.id} item={item} />)}
+              {popular.length > 0 && (
+                <>
+                  <SectionTitle>Populer</SectionTitle>
+                  {popular.map((item) => <MenuCard key={item.id} item={item} />)}
+                </>
+              )}
+              {rest.length > 0 && (
+                <>
+                  {popular.length > 0 && <SectionTitle>Lainnya</SectionTitle>}
+                  {rest.map((item) => <MenuCard key={item.id} item={item} />)}
+                </>
+              )}
+              {filtered.length === 0 && (
+                <div style={{ textAlign: "center", padding: "60px 20px", color: "var(--text-muted)" }}>
+                  <div style={{ fontSize: 40, marginBottom: 12 }}>🔍</div>
+                  <p>Menu tidak ditemukan</p>
+                </div>
+              )}
             </>
-          )}
-          {filtered.length === 0 && (
-            <div style={{ textAlign: "center", padding: "60px 20px", color: "var(--text-muted)" }}>
-              <div style={{ fontSize: 40, marginBottom: 12 }}>🔍</div>
-              <p>Menu tidak ditemukan</p>
-            </div>
           )}
         </div>
-
-      </div>
       {/* akhir div scroll */}
 
       {/* ══════════════════════════════════════

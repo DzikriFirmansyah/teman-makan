@@ -67,6 +67,36 @@ export default function QRPage() {
                 ))}
             </div>
 
+            {/* QR Code Admin */}
+            <div style={{ marginTop: 24 }}>
+              <div style={{
+                background: "white", border: "1px solid #E5E7EB",
+                borderRadius: 16, padding: 20, textAlign: "center",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
+                maxWidth: 200,
+              }}>
+                <div style={{
+                  fontFamily: "'Hammersmith One', sans-serif",
+                  fontSize: 20, fontWeight: 700,
+                  color: "#1A1A1A", marginBottom: 14,
+                }}>
+                  Admin
+                </div>
+                <div style={{ display: "flex", justifyContent: "center", marginBottom: 12 }}>
+                  <QRCodeSVG
+                    value={`${BASE_URL}/admin`}
+                    size={140}
+                    bgColor="#FFFFFF"
+                    fgColor="#1A1A1A"
+                    level="M"
+                  />
+                </div>
+                <div style={{ fontSize: 10, color: "#9CA3AF" }}>
+                  {BASE_URL}/admin
+                </div>
+              </div>
+            </div>
+
             <div style={{ marginTop: 24, textAlign: "center" }}>
                 <button
                     onClick={() => window.print()}

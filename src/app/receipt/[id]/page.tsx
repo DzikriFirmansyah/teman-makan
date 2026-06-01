@@ -29,6 +29,47 @@ interface Props {
   params: Promise<{ id: string }>;
 }
 
+function SkeletonReceipt() {
+  return (
+    <main style={{ minHeight: "100vh", display: "flex", flexDirection: "column", background: "var(--bg)" }}>
+      <div className="hide-scrollbar" style={{ flex: 1, overflowY: "auto", padding: "20px 20px 40px", display: "flex", flexDirection: "column", gap: 14 }}>
+
+        {/* Hero skeleton */}
+        <div className="skeleton" style={{ width: "100%", height: 130, borderRadius: 16 }} />
+
+        {/* Transaksi card skeleton */}
+        <div style={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "var(--radius)", overflow: "hidden" }}>
+          <div className="skeleton" style={{ height: 36 }} />
+          {[1,2,3,4].map((i) => (
+            <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "12px 16px", borderBottom: "1px solid var(--border)" }}>
+              <div className="skeleton" style={{ width: "35%", height: 13 }} />
+              <div className="skeleton" style={{ width: "45%", height: 13 }} />
+            </div>
+          ))}
+        </div>
+
+        {/* Items card skeleton */}
+        <div style={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "var(--radius)", overflow: "hidden" }}>
+          <div className="skeleton" style={{ height: 36 }} />
+          {[1,2,3].map((i) => (
+            <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: "10px 16px", borderBottom: "1px dashed var(--border)" }}>
+              <div className="skeleton" style={{ width: "50%", height: 13 }} />
+              <div className="skeleton" style={{ width: "25%", height: 13 }} />
+            </div>
+          ))}
+          <div style={{ display: "flex", justifyContent: "space-between", padding: "14px 16px" }}>
+            <div className="skeleton" style={{ width: "20%", height: 16 }} />
+            <div className="skeleton" style={{ width: "30%", height: 16 }} />
+          </div>
+        </div>
+
+        {/* Button skeleton */}
+        <div className="skeleton" style={{ width: "100%", height: 50, borderRadius: 16 }} />
+
+      </div>
+    </main>
+  );
+}
 export default function ReceiptPage({ params }: Props) {
   const { id } = use(params);
   const router = useRouter();
@@ -38,25 +79,22 @@ export default function ReceiptPage({ params }: Props) {
 
     useEffect(() => {
       const fetchOrder = () => {
-          fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/orders/${id}`, {
-              headers: { 'ngrok-skip-browser-warning': 'true' },
-          })
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/orders/${id}`, {
+          headers: { 'ngrok-skip-browser-warning': 'true' },
+        })
           .then((res) => res.json())
           .then((data) => {
-            setOrder(data);
-            setLoading(false);
-            clearCart();
+            setTimeout(() => {      // ← tambah delay 1 detik
+              setOrder(data);
+              setLoading(false);
+              clearCart();
+            }, 1000);
           })
           .catch(() => setLoading(false));
       };
 
-      // Fetch pertama kali
       fetchOrder();
-
-      // Polling setiap 10 detik
       const interval = setInterval(fetchOrder, 10000);
-
-      // Cleanup saat halaman ditutup
       return () => clearInterval(interval);
     }, [id]);
 
@@ -68,13 +106,9 @@ export default function ReceiptPage({ params }: Props) {
   });
   const timeStr = now.toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit" });
 
-  if (loading) {
-      return (
-          <main className="page-enter" style={{ height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "var(--bg)" }}>
-        <p style={{ color: "var(--text-muted)", fontSize: 14 }}>Memuat struk...</p>
-      </main>
-    );
-  }
+    if (loading) {
+      return <SkeletonReceipt />;  // ← ganti dari teks "Memuat struk..."
+    }
 
   if (!order) {
     return (

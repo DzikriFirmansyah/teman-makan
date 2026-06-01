@@ -43,7 +43,7 @@ export default function MenuPage() {
           setTimeout(() => {
             setMenuItems(data);
             setLoading(false);
-        }, 2000); // Simulasi delay 1 detik
+        }, 750); // Simulasi delay 1 detik
         });
   }, []);
 
@@ -86,6 +86,70 @@ export default function MenuPage() {
   );
 }
 
+function SkeletonPage() {
+  return (
+    <main style={{ height: "100vh", display: "flex", flexDirection: "column", overflow: "hidden", background: "var(--bg)" }}>
+
+      {/* Header skeleton */}
+      <div style={{ flexShrink: 0, padding: "16px 20px", background: "var(--bg-card)", borderBottom: "1px solid var(--border)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div>
+          <div className="skeleton" style={{ width: 130, height: 18, marginBottom: 6 }} />
+          <div className="skeleton" style={{ width: 90, height: 12 }} />
+        </div>
+        <div className="skeleton" style={{ width: 40, height: 40, borderRadius: "50%" }} />
+      </div>
+
+      <div className="hide-scrollbar" style={{ flex: 1, overflowY: "auto" }}>
+
+        {/* Search skeleton */}
+        <div style={{ padding: "12px 20px", background: "var(--bg-card)" }}>
+          <div className="skeleton" style={{ width: "100%", height: 42, borderRadius: 10 }} />
+        </div>
+
+        {/* Banner skeleton */}
+        <div style={{ padding: "0 20px 12px", background: "var(--bg-card)" }}>
+          <div className="skeleton" style={{ width: "100%", height: 150, borderRadius: 12 }} />
+          <div style={{ display: "flex", justifyContent: "center", gap: 6, marginTop: 8 }}>
+            <div className="skeleton" style={{ width: 20, height: 6, borderRadius: 999 }} />
+            <div className="skeleton" style={{ width: 6, height: 6, borderRadius: 999 }} />
+            <div className="skeleton" style={{ width: 6, height: 6, borderRadius: 999 }} />
+          </div>
+        </div>
+
+        {/* Chips skeleton */}
+        <div style={{ display: "flex", gap: 8, padding: "12px 20px", background: "var(--bg-card)", borderBottom: "1px solid var(--border)", overflow: "hidden" }}>
+          {[70, 60, 55, 65].map((w, i) => (
+            <div key={i} className="skeleton" style={{ width: w, height: 32, borderRadius: 999, flexShrink: 0 }} />
+          ))}
+        </div>
+
+        {/* Menu card skeleton */}
+        <div style={{ padding: "16px 20px 90px" }}>
+          <div className="skeleton" style={{ width: 70, height: 14, marginBottom: 12 }} />
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} style={{
+              display: "flex", gap: 14, alignItems: "center",
+              background: "var(--bg-card)", border: "1px solid var(--border)",
+              borderRadius: "var(--radius)", padding: 14, marginBottom: 10,
+            }}>
+              <div className="skeleton" style={{ width: 80, height: 80, borderRadius: "var(--radius-sm)", flexShrink: 0 }} />
+              <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
+                <div className="skeleton" style={{ height: 15, width: "60%" }} />
+                <div className="skeleton" style={{ height: 11, width: "90%" }} />
+                <div className="skeleton" style={{ height: 11, width: "70%" }} />
+                <div className="skeleton" style={{ height: 13, width: "35%" }} />
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </main>
+  );
+}
+
+if (loading) return <SkeletonPage />;
+
   return (
     <main style={{
       height: "100vh",  
@@ -108,7 +172,7 @@ export default function MenuPage() {
       }}>
         <div>
           <div style={{ fontFamily: "'Hammersmith One', sans-serif", fontSize: 20, fontWeight: 700, color: "var(--text)" }}>
-            Waktunya Makan
+            Waktunya Makan!
           </div>
           <div style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 1 }}>
             Manjakan lidahmu dengan berbagai rasa
@@ -266,22 +330,12 @@ export default function MenuPage() {
 
         {/* MENU LIST */}
         <div style={{ padding: "16px 20px 90px" }}>
-          {loading ? (
-            <>
-              {Array.from({ length: 5 }).map((_, i) => (
-                <SkeletonCard key={i} />
-              ))}
-            </>
-          ) : (
-            <>
-              {rest.length > 0 && rest.map((item) => <MenuCard key={item.id} item={item} />)}
-              {filtered.length === 0 && (
-                <div style={{ textAlign: "center", padding: "60px 20px", color: "var(--text-muted)" }}>
-                  <div style={{ fontSize: 40, marginBottom: 12 }}>🔍</div>
-                  <p>Menu tidak ditemukan</p>
-                </div>
-              )}
-            </>
+          {rest.map((item) => <MenuCard key={item.id} item={item} />)}
+          {filtered.length === 0 && (
+            <div style={{ textAlign: "center", padding: "60px 20px", color: "var(--text-muted)" }}>
+              <div style={{ fontSize: 40, marginBottom: 12 }}>🔍</div>
+              <p>Menu tidak ditemukan</p>
+            </div>
           )}
         </div>
 

@@ -55,7 +55,8 @@ export default function CartPage() {
     };
 
   return (
-    <main style={{
+    <main className="page-enter"
+      style={{
       height: "100vh",
       display: "flex",
       flexDirection: "column",

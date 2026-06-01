@@ -32,7 +32,7 @@ export default function CheckoutPage({ params }: Props) {
   };
 
   return (
-    <main style={{ height: "100vh", display: "flex", flexDirection: "column", overflow: "hidden", background: "var(--bg)" }}>
+    <main className="page-enter" style={{ height: "100vh", display: "flex", flexDirection: "column", overflow: "hidden", background: "var(--bg)" }}>
 
       {/* TOP BAR */}
       <div style={{

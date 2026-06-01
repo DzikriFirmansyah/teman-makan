@@ -69,8 +69,8 @@ export default function ReceiptPage({ params }: Props) {
   const timeStr = now.toLocaleTimeString("id-ID", { hour: "2-digit", minute: "2-digit" });
 
   if (loading) {
-    return (
-      <main style={{ height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "var(--bg)" }}>
+      return (
+          <main className="page-enter" style={{ height: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "var(--bg)" }}>
         <p style={{ color: "var(--text-muted)", fontSize: 14 }}>Memuat struk...</p>
       </main>
     );

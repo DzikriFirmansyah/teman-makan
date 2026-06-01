@@ -15,6 +15,51 @@ interface Props {
     params: Promise<{ id: string }>;
 }
 
+function SkeletonDetail() {
+    return (
+    <main style={{ height: "100vh", display: "flex", flexDirection: "column", overflow: "hidden", background: "var(--bg-card)" }}>
+
+        {/* Hero skeleton */}
+        <div className="skeleton" style={{ width: "100%", height: 220, borderRadius: 0 }} />
+
+        {/* Body skeleton */}
+        <div style={{ flex: 1, overflowY: "auto", padding: "20px 20px 180px" }}>
+        <div className="skeleton" style={{ width: "70%", height: 28, marginBottom: 10 }} />
+        <div className="skeleton" style={{ width: "35%", height: 22, marginBottom: 16 }} />
+        <div className="skeleton" style={{ width: "100%", height: 14, marginBottom: 8 }} />
+        <div className="skeleton" style={{ width: "100%", height: 14, marginBottom: 8 }} />
+        <div className="skeleton" style={{ width: "80%", height: 14, marginBottom: 20 }} />
+
+        <hr style={{ border: "none", borderTop: "1px solid var(--border)", margin: "16px 0" }} />
+
+        <div className="skeleton" style={{ width: "40%", height: 12, marginBottom: 10 }} />
+        <div className="skeleton" style={{ width: "100%", height: 60, borderRadius: 10 }} />
+        </div>
+
+        {/* Footer skeleton */}
+        <div style={{
+        position: "fixed", bottom: 0, left: "50%", transform: "translateX(-50%)",
+        width: "100%", maxWidth: 430,
+        background: "var(--bg-card)", borderTop: "1px solid var(--border)",
+        padding: "12px 20px 28px",
+        }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+            <div>
+            <div className="skeleton" style={{ width: 60, height: 12, marginBottom: 6 }} />
+            <div className="skeleton" style={{ width: 100, height: 13 }} />
+            </div>
+            <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
+            <div className="skeleton" style={{ width: 34, height: 34, borderRadius: "50%" }} />
+            <div className="skeleton" style={{ width: 28, height: 18 }} />
+            <div className="skeleton" style={{ width: 34, height: 34, borderRadius: "50%" }} />
+            </div>
+        </div>
+        <div className="skeleton" style={{ width: "100%", height: 50, borderRadius: 16 }} />
+        </div>
+
+    </main>
+    );
+}
 export default function MenuDetailPage({ params }: Props) {
     const { id } = use(params);
     const router = useRouter();
@@ -26,10 +71,16 @@ export default function MenuDetailPage({ params }: Props) {
     const [showImageModal, setShowImageModal] = useState(false);
 
     useEffect(() => {
-        fetchMenu().then((data) => setMenuItems(data));
+        fetchMenu().then((data) => {
+            setTimeout(() => {
+                setMenuItems(data);
+            }, 750);  // ← delay 1 detik
+        });
     }, []);
 
     const item = menuItems.find((m) => String(m.id) === String(id));
+
+    if (menuItems.length === 0) return <SkeletonDetail />;
 
     // Guard: kalau item tidak ditemukan atau masih loading
     if (!item) {

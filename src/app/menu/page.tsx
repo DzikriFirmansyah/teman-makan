@@ -140,13 +140,6 @@ export default function MenuPage() {
         overflowY: "auto",
           }}>
 
-        {loading && (
-            <div style={{ textAlign: "center", padding: "60px 20px", color: "var(--text-muted)" }}>
-            <div style={{ fontSize: 32, marginBottom: 12 }}>⏳</div>
-            <p>Memuat menu...</p>
-            </div>
-        )}
-
         {/* SEARCH */}
         <div style={{ padding: "12px 20px", background: "var(--bg-card)" }}>
           <div style={{
@@ -271,10 +264,9 @@ export default function MenuPage() {
           ))}
         </div>
 
-        {/* MENU LIST — ikut scroll bersama di atas */}
+        {/* MENU LIST */}
         <div style={{ padding: "16px 20px 90px" }}>
           {loading ? (
-            // Tampilkan 5 skeleton card saat loading
             <>
               {Array.from({ length: 5 }).map((_, i) => (
                 <SkeletonCard key={i} />
@@ -282,18 +274,7 @@ export default function MenuPage() {
             </>
           ) : (
             <>
-              {popular.length > 0 && (
-                <>
-                  <SectionTitle>Populer</SectionTitle>
-                  {popular.map((item) => <MenuCard key={item.id} item={item} />)}
-                </>
-              )}
-              {rest.length > 0 && (
-                <>
-                  {popular.length > 0 && <SectionTitle>Lainnya</SectionTitle>}
-                  {rest.map((item) => <MenuCard key={item.id} item={item} />)}
-                </>
-              )}
+              {rest.length > 0 && rest.map((item) => <MenuCard key={item.id} item={item} />)}
               {filtered.length === 0 && (
                 <div style={{ textAlign: "center", padding: "60px 20px", color: "var(--text-muted)" }}>
                   <div style={{ fontSize: 40, marginBottom: 12 }}>🔍</div>
@@ -303,11 +284,10 @@ export default function MenuPage() {
             </>
           )}
         </div>
-      {/* akhir div scroll */}
 
-      {/* ══════════════════════════════════════
-          BOTTOM NAV — diam, tidak ikut scroll
-      ══════════════════════════════════════ */}
+      </div>
+      {/* ← tutup div scroll di sini */}
+
       <BottomNav />
 
     </main>

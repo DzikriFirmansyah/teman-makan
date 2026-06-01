@@ -99,7 +99,7 @@ export default function AdminPage() {
   // ── LOGIN SCREEN ──
   if (!isLoggedIn) {
     return (
-      <main style={{
+      <main className="page-enter" style={{
         minHeight: "100vh",
         background: "linear-gradient(160deg, #ffffff 0%, #EBF6FF 40%, #C8ECFF 100%)",
         display: "flex", alignItems: "center", justifyContent: "center",
@@ -169,7 +169,7 @@ export default function AdminPage() {
 
   // ── ADMIN DASHBOARD ──
   return (
-    <main style={{ minHeight: "100vh", background: "#F5F9FF", display: "flex", flexDirection: "column" }}>
+    <main className="page-enter" style={{ minHeight: "100vh", background: "#F5F9FF", display: "flex", flexDirection: "column" }}>
 
       {/* HEADER */}
       <div style={{

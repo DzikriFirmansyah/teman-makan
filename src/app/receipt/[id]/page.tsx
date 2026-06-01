@@ -10,6 +10,7 @@ interface OrderItem {
   menuName: string;
   price: number;
   qty: number;
+  note?: string;
 }
 
 interface Order {
@@ -172,16 +173,24 @@ export default function ReceiptPage({ params }: Props) {
             Pesanan
           </div>
 
-          {order.items.map((ci) => (
-            <div key={ci.id} style={{
-              display: "flex", justifyContent: "space-between",
-              padding: "10px 16px", fontSize: 13,
-              borderBottom: "1px dashed var(--border)",
-            }}>
+        {order.items.map((ci) => (
+          <div key={ci.id} style={{
+            display: "flex", justifyContent: "space-between",
+            padding: "10px 16px", fontSize: 13,
+            borderBottom: "1px dashed var(--border)",
+            flexDirection: "column",  // ← tambah ini
+          }}>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
               <span style={{ color: "var(--text)" }}>{ci.menuName} x{ci.qty}</span>
               <span style={{ color: "var(--text-muted)" }}>{formatRupiah(ci.price * ci.qty)}</span>
             </div>
-          ))}
+            {ci.note && (
+              <span style={{ fontSize: 11, color: "var(--text-light)", fontStyle: "italic", marginTop: 3 }}>
+                📝 {ci.note}
+              </span>
+            )}
+          </div>
+        ))}
 
           {[
             ["Subtotal", formatRupiah(order.subtotal)],

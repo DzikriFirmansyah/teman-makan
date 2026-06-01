@@ -124,8 +124,8 @@ export default function CartPage() {
         )}
 
         {/* Cart items */}
-        {items.map((cartItem) => (
-          <div key={cartItem.menuItem.id} style={{
+        {items.map((cartItem, index) => (
+          <div key={index} style={{
             display: "flex", gap: 12, alignItems: "center",
             background: "var(--bg-card)", border: "1px solid var(--border)",
             borderRadius: "var(--radius)", padding: 12, marginBottom: 10,
@@ -166,6 +166,16 @@ export default function CartPage() {
               }}>
                 {formatRupiah(cartItem.menuItem.price)}
               </p>
+
+            {/* Tambah ini */}
+            {cartItem.note && (
+                <p style={{
+                fontSize: 11, color: "var(--text-light)",
+                marginBottom: 8, fontStyle: "italic",
+                }}>
+                📝 {cartItem.note}
+                </p>
+            )}
 
               {/* Delete button */}
               <button

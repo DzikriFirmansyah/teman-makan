@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // src/store/cartStore.ts
 // State management untuk keranjang belanja (Zustand)
 // ============================================================
@@ -37,41 +37,53 @@ export const useCartStore = create<CartStore>()(
 
       addItem: (menuItem, qty = 1, note = "") => {
         set((state) => {
+          // Cari item yang sama DAN note yang sama
           const existing = state.items.find(
-            (i) => i.menuItem.id === menuItem.id
+            (i) => i.menuItem.id === menuItem.id && i.note === note
           );
+
           if (existing) {
-            // Kalau sudah ada, tambah qty saja
+            // Sama persis (menu + note) → tambah qty saja
             return {
               items: state.items.map((i) =>
-                i.menuItem.id === menuItem.id
+                i.menuItem.id === menuItem.id && i.note === note
                   ? { ...i, qty: i.qty + qty }
                   : i
               ),
             };
           }
-          // Kalau belum ada, push item baru
+
+          // Note berbeda → tambah sebagai item baru
           return { items: [...state.items, { menuItem, qty, note }] };
         });
       },
 
-      removeItem: (menuItemId) => {
-        set((state) => ({
-          items: state.items.filter((i) => i.menuItem.id !== menuItemId),
-        }));
-      },
+        removeItem: (menuItemId) => {
+          set((state) => {
+            // Hapus hanya 1 item pertama yang cocok
+            const idx = state.items.findIndex((i) => i.menuItem.id === menuItemId);
+            if (idx === -1) return state;
+            const newItems = [...state.items];
+            newItems.splice(idx, 1);
+            return { items: newItems };
+          });
+        },
 
-      updateQty: (menuItemId, qty) => {
-        if (qty <= 0) {
-          get().removeItem(menuItemId);
-          return;
-        }
-        set((state) => ({
-          items: state.items.map((i) =>
-            i.menuItem.id === menuItemId ? { ...i, qty } : i
-          ),
-        }));
-      },
+
+        updateQty: (menuItemId, qty) => {
+          if (qty <= 0) {
+            get().removeItem(menuItemId);
+            return;
+          }
+          set((state) => {
+            // Update hanya 1 item pertama yang cocok
+            const idx = state.items.findIndex((i) => i.menuItem.id === menuItemId);
+            if (idx === -1) return state;
+            const newItems = [...state.items];
+            newItems[idx] = { ...newItems[idx], qty };
+            return { items: newItems };
+          });
+        },
 
       updateNote: (menuItemId, note) => {
         set((state) => ({

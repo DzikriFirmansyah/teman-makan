@@ -40,9 +40,11 @@ export default function MenuPage() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
       fetchMenu().then((data) => {
-          setMenuItems(data);
-          setLoading(false);
-      });
+          setTimeout(() => {
+            setMenuItems(data);
+            setLoading(false);
+        }, 2000); // Simulasi delay 1 detik
+        });
   }, []);
 
   useEffect(() => {

@@ -63,7 +63,7 @@ export default function MenuCard({ item }: MenuCardProps) {
       <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
         {/* Name + tag */}
         <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginBottom: 3 }}>
-          <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 15, fontWeight: 700, color: "var(--text)" }}>
+          <span style={{ fontFamily: "'Hammersmith One', sans-serif", fontSize: 15, fontWeight: 700, color: "var(--text)" }}>
             {item.name}
           </span>
         </div>
@@ -129,7 +129,7 @@ export default function MenuCard({ item }: MenuCardProps) {
                         </svg>
                     </div>
                     <p style={{
-                        fontFamily: "'Playfair Display', serif",
+                        fontFamily: "'Hammersmith One', sans-serif",
                         fontSize: 18, fontWeight: 700,
                         color: "var(--text)", marginBottom: 6,
                     }}>

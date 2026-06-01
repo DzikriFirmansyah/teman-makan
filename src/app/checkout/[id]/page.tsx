@@ -56,7 +56,7 @@ export default function CheckoutPage({ params }: Props) {
           </svg>
         </button>
         <div>
-          <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, fontWeight: 700 }}>
+          <div style={{ fontFamily: "'Hammersmith One', sans-serif", fontSize: 18, fontWeight: 700 }}>
             Pembayaran
           </div>
           <div style={{ fontSize: 12, color: "var(--text-muted)" }}>Order #{ORDER_ID}</div>
@@ -87,7 +87,7 @@ export default function CheckoutPage({ params }: Props) {
           display: "flex", flexDirection: "column", alignItems: "center", gap: 12,
           boxShadow: "var(--shadow-card)",
         }}>
-          <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 16, fontWeight: 700 }}>
+          <p style={{ fontFamily: "'Hammersmith One', sans-serif", fontSize: 16, fontWeight: 700 }}>
             Scan untuk membayar
           </p>
           <p style={{ fontSize: 28, fontWeight: 500, color: "var(--accent)" }}>

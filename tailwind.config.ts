@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ["'Playfair Display'", "serif"],
-        body: ["'DM Sans'", "sans-serif"],
+        display: ["'Hammersmith One'", "sans-serif"],
+        body: ["'Poppins'", "sans-serif"],
       },
       colors: {
         bg: {

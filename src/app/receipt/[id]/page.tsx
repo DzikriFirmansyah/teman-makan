@@ -185,7 +185,7 @@ export default function ReceiptPage({ params }: Props) {
             width: "100%", padding: 15,
             background: "var(--accent)", color: "#FAF7F2",
             border: "none", borderRadius: "var(--radius)",
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Poppins', sans-serif",
             fontSize: 15, fontWeight: 500, cursor: "pointer",
           }}
         >

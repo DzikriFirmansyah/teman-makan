@@ -130,7 +130,7 @@ export default function SplashPage() {
 
         {/* Nama restoran */}
         <h1 style={{
-          fontFamily: "'Playfair Display', serif",
+          fontFamily: "'Hammersmith One', sans-serif",
           fontSize: 42, fontWeight: 700,
           color: "#0A1628",
           lineHeight: 1.15,
@@ -190,7 +190,7 @@ export default function SplashPage() {
             fontSize: 16,
             fontWeight: 500,
             cursor: "pointer",
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Poppins', sans-serif",
             boxShadow: "0 8px 24px rgba(0,174,255,0.40)",
             letterSpacing: "0.01em",
             marginBottom: 16,

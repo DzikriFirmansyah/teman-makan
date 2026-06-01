@@ -23,8 +23,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id">
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Poppins:wght@300;400;500;600&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
-        {/* Wrapper mobile-first: max 430px, tengah di layar lebar */}
         <div className="mobile-wrapper">
           {children}
         </div>

@@ -10,7 +10,7 @@ export default function QRPage() {
     return (
         <main style={{ padding: 24, background: "#f5f5f5", minHeight: "100vh" }}>
             <h1 style={{
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: "'Hammersmith One', sans-serif",
                 fontSize: 24, fontWeight: 700,
                 marginBottom: 6, color: "#1A1A1A",
             }}>
@@ -42,7 +42,7 @@ export default function QRPage() {
                             Meja
                         </div>
                         <div style={{
-                            fontFamily: "'Playfair Display', serif",
+                            fontFamily: "'Hammersmith One', sans-serif",
                             fontSize: 32, fontWeight: 700,
                             color: "#1A1A1A", marginBottom: 14,
                         }}>
@@ -75,7 +75,7 @@ export default function QRPage() {
                         background: "#00AEFF", color: "white",
                         border: "none", borderRadius: 999,
                         fontSize: 14, fontWeight: 500, cursor: "pointer",
-                        fontFamily: "'DM Sans', sans-serif",
+                        fontFamily: "'Poppins', sans-serif",
                     }}
                 >
                     🖨️ Print QR Code

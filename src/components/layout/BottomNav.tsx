@@ -51,7 +51,7 @@ export default function BottomNav() {
               gap: 4, background: "none", border: "none", cursor: "pointer",
               padding: "4px 20px", position: "relative",
               color: isActive ? "var(--accent)" : "var(--text-light)",
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Poppins', sans-serif",
               transition: "color 0.15s",
             }}
           >

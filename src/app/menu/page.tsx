@@ -82,7 +82,7 @@ export default function MenuPage() {
         zIndex: 50,
       }}>
         <div>
-          <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 20, fontWeight: 700, color: "var(--text)" }}>
+          <div style={{ fontFamily: "'Hammersmith One', sans-serif", fontSize: 20, fontWeight: 700, color: "var(--text)" }}>
             Waktunya Makan
           </div>
           <div style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 1 }}>
@@ -98,7 +98,7 @@ export default function MenuPage() {
           <span style={{
             fontSize: 13, fontWeight: 700,
             color: "white",
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Poppins', sans-serif",
           }}>
             {tableNumber || "—"}
           </span>
@@ -140,7 +140,7 @@ export default function MenuPage() {
               onChange={(e) => setSearch(e.target.value)}
               style={{
                 border: "none", background: "transparent",
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Poppins', sans-serif",
                 fontSize: 14, color: "var(--text)", outline: "none", width: "100%",
               }}
             />
@@ -236,7 +236,7 @@ export default function MenuPage() {
                 border: "1px solid var(--border)",
                 background: activeCategory === cat.value ? "var(--accent)" : "var(--bg)",
                 color: activeCategory === cat.value ? "#FFFFFF" : "var(--text-muted)",
-                fontFamily: "'DM Sans', sans-serif",
+                fontFamily: "'Poppins', sans-serif",
                 fontSize: 13, fontWeight: activeCategory === cat.value ? 500 : 400,
                 cursor: "pointer", transition: "all 0.15s", whiteSpace: "nowrap",
               }}
@@ -283,7 +283,7 @@ export default function MenuPage() {
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <div style={{
-      fontFamily: "'Playfair Display', serif", fontSize: 15, fontWeight: 700,
+      fontFamily: "'Hammersmith One', sans-serif", fontSize: 15, fontWeight: 700,
       color: "var(--text)", marginBottom: 12, marginTop: 4,
       display: "flex", alignItems: "center", gap: 8,
     }}>

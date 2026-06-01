@@ -120,7 +120,7 @@ export default function AdminPage() {
             👨‍🍳
           </div>
           <h1 style={{
-            fontFamily: "'Playfair Display', serif",
+            fontFamily: "'Hammersmith One', sans-serif",
             fontSize: 22, fontWeight: 700, color: "#0A1628", marginBottom: 6,
           }}>
             Admin Panel
@@ -139,7 +139,7 @@ export default function AdminPage() {
               width: "100%", padding: "12px 16px",
               border: "1px solid rgba(0,0,0,0.12)",
               borderRadius: 12, fontSize: 14,
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Poppins', sans-serif",
               outline: "none", marginBottom: 8,
               boxSizing: "border-box",
             }}
@@ -156,7 +156,7 @@ export default function AdminPage() {
               background: "linear-gradient(135deg, #00AEFF, #0088DD)",
               color: "white", border: "none", borderRadius: 12,
               fontSize: 15, fontWeight: 500, cursor: "pointer",
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Poppins', sans-serif",
               marginTop: 8,
             }}
           >
@@ -179,7 +179,7 @@ export default function AdminPage() {
         position: "sticky", top: 0, zIndex: 50,
       }}>
         <div>
-          <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 20, fontWeight: 700, color: "#0A1628" }}>
+          <div style={{ fontFamily: "'Hammersmith One', sans-serif", fontSize: 20, fontWeight: 700, color: "#0A1628" }}>
             Admin Panel
           </div>
           <div style={{ fontSize: 12, color: "#6B7280" }}>Teman Makan</div>
@@ -191,7 +191,7 @@ export default function AdminPage() {
               padding: "8px 14px", background: "#EBF6FF",
               border: "1px solid rgba(0,174,255,0.25)",
               borderRadius: 999, fontSize: 12, color: "#0077CC",
-              cursor: "pointer", fontFamily: "'DM Sans', sans-serif",
+              cursor: "pointer", fontFamily: "'Poppins', sans-serif",
             }}
           >
             🔄 Refresh
@@ -202,7 +202,7 @@ export default function AdminPage() {
               padding: "8px 14px", background: "#FEE2E2",
               border: "none", borderRadius: 999,
               fontSize: 12, color: "#DC2626",
-              cursor: "pointer", fontFamily: "'DM Sans', sans-serif",
+              cursor: "pointer", fontFamily: "'Poppins', sans-serif",
             }}
           >
             Keluar
@@ -227,7 +227,7 @@ export default function AdminPage() {
               background: "none", border: "none",
               borderBottom: activeTab === tab.key ? "2px solid #00AEFF" : "2px solid transparent",
               color: activeTab === tab.key ? "#00AEFF" : "#6B7280",
-              fontFamily: "'DM Sans', sans-serif",
+              fontFamily: "'Poppins', sans-serif",
               fontSize: 14, fontWeight: 500, cursor: "pointer",
               display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
             }}
@@ -260,7 +260,7 @@ export default function AdminPage() {
             {incoming.length === 0 ? (
               <div style={{ textAlign: "center", padding: "60px 0", color: "#6B7280" }}>
                 <div style={{ fontSize: 40, marginBottom: 12 }}>🍽️</div>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, fontWeight: 700, color: "#1A1A1A", marginBottom: 6 }}>
+                <p style={{ fontFamily: "'Hammersmith One', sans-serif", fontSize: 18, fontWeight: 700, color: "#1A1A1A", marginBottom: 6 }}>
                   Belum ada pesanan masuk
                 </p>
                 <p style={{ fontSize: 13 }}>Pesanan baru akan muncul di sini</p>
@@ -278,7 +278,7 @@ export default function AdminPage() {
                   }}
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 16, fontWeight: 700, color: "#0A1628" }}>
+                    <div style={{ fontFamily: "'Hammersmith One', sans-serif", fontSize: 16, fontWeight: 700, color: "#0A1628" }}>
                       Order #{order.id}
                     </div>
                     <span style={{
@@ -314,7 +314,7 @@ export default function AdminPage() {
             {history.length === 0 ? (
               <div style={{ textAlign: "center", padding: "60px 0", color: "#6B7280" }}>
                 <div style={{ fontSize: 40, marginBottom: 12 }}>📋</div>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, fontWeight: 700, color: "#1A1A1A", marginBottom: 6 }}>
+                <p style={{ fontFamily: "'Hammersmith One', sans-serif", fontSize: 18, fontWeight: 700, color: "#1A1A1A", marginBottom: 6 }}>
                   Belum ada riwayat
                 </p>
                 <p style={{ fontSize: 13 }}>Pesanan yang selesai akan muncul di sini</p>
@@ -332,7 +332,7 @@ export default function AdminPage() {
                   }}
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 16, fontWeight: 700, color: "#0A1628" }}>
+                    <div style={{ fontFamily: "'Hammersmith One', sans-serif", fontSize: 16, fontWeight: 700, color: "#0A1628" }}>
                       Order #{order.id}
                     </div>
                     <span style={{
@@ -393,7 +393,7 @@ export default function AdminPage() {
             {/* Header modal */}
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
               <div>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, fontWeight: 700, color: "#0A1628" }}>
+                <div style={{ fontFamily: "'Hammersmith One', sans-serif", fontSize: 18, fontWeight: 700, color: "#0A1628" }}>
                   Order #{selectedOrder.id}
                 </div>
                 <div style={{ fontSize: 13, color: "#6B7280" }}>
@@ -474,7 +474,7 @@ export default function AdminPage() {
                   background: "linear-gradient(135deg, #00AEFF, #0088DD)",
                   color: "white", border: "none", borderRadius: 12,
                   fontSize: 15, fontWeight: 500, cursor: "pointer",
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Poppins', sans-serif",
                 }}
               >
                 ✓ Tandai Selesai
@@ -489,7 +489,7 @@ export default function AdminPage() {
                   background: "#F3F4F6", color: "#6B7280",
                   border: "none", borderRadius: 12,
                   fontSize: 15, fontWeight: 500, cursor: "pointer",
-                  fontFamily: "'DM Sans', sans-serif",
+                  fontFamily: "'Poppins', sans-serif",
                 }}
               >
                 Tutup

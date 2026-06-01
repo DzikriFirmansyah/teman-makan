@@ -101,7 +101,7 @@ export default function MenuDetailPage({ params }: Props) {
 
             {/* BODY */}
             <div style={{ flex: 1, overflowY: "auto", padding: "20px 20px 180px" }}>
-                <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 26, fontWeight: 700, lineHeight: 1.2, color: "var(--text)", marginBottom: 6 }}>
+                <h1 style={{ fontFamily: "'Hammersmith One', sans-serif", fontSize: 26, fontWeight: 700, lineHeight: 1.2, color: "var(--text)", marginBottom: 6 }}>
                     {item.name}
                 </h1>
                 <p style={{ fontSize: 22, fontWeight: 500, color: "var(--accent)", marginBottom: 12 }}>
@@ -221,7 +221,7 @@ export default function MenuDetailPage({ params }: Props) {
                                 <polyline points="20 6 9 17 4 12" />
                             </svg>
                         </div>
-                        <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: 6 }}>
+                        <p style={{ fontFamily: "'Hammersmith One', sans-serif", fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: 6 }}>
                             Ditambahkan!
                         </p>
                         <p style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 4 }}>

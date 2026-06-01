@@ -58,7 +58,7 @@ export default function ReceiptIndexPage() {
         background: "var(--bg-card)",
         borderBottom: "1px solid var(--border)",
       }}>
-        <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 20, fontWeight: 700, color: "var(--text)" }}>
+        <div style={{ fontFamily: "'Hammersmith One', sans-serif", fontSize: 20, fontWeight: 700, color: "var(--text)" }}>
           Riwayat Pesanan
         </div>
         <div style={{ fontSize: 12, color: "var(--text-muted)", marginTop: 1 }}>
@@ -72,7 +72,7 @@ export default function ReceiptIndexPage() {
         {orders.length === 0 && (
           <div style={{ textAlign: "center", padding: "80px 20px", color: "var(--text-muted)" }}>
             <div style={{ fontSize: 52, marginBottom: 14 }}>🧾</div>
-            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: 6 }}>
+            <p style={{ fontFamily: "'Hammersmith One', sans-serif", fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: 6 }}>
               Belum ada pesanan
             </p>
             <p style={{ fontSize: 14, marginBottom: 20 }}>Pesanan yang selesai akan muncul di sini</p>
@@ -81,7 +81,7 @@ export default function ReceiptIndexPage() {
               style={{
                 padding: "10px 24px", background: "var(--accent)", color: "white",
                 border: "none", borderRadius: 999, cursor: "pointer",
-                fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 500,
+                fontFamily: "'Poppins', sans-serif", fontSize: 14, fontWeight: 500,
               }}
             >
               Lihat Menu
@@ -102,7 +102,7 @@ export default function ReceiptIndexPage() {
           >
             {/* Header card */}
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 15, fontWeight: 700, color: "var(--text)" }}>
+              <div style={{ fontFamily: "'Hammersmith One', sans-serif", fontSize: 15, fontWeight: 700, color: "var(--text)" }}>
                 Order #{order.id}
               </div>
                 <span style={{

@@ -85,7 +85,7 @@ export default function CartPage() {
           </svg>
         </button>
         <div>
-          <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, fontWeight: 700 }}>
+          <div style={{ fontFamily: "'Hammersmith One', sans-serif", fontSize: 18, fontWeight: 700 }}>
             Keranjang
           </div>
           <div style={{ fontSize: 12, color: "var(--text-muted)" }}>
@@ -105,7 +105,7 @@ export default function CartPage() {
         {items.length === 0 && (
           <div style={{ textAlign: "center", padding: "80px 20px", color: "var(--text-muted)" }}>
             <div style={{ fontSize: 52, marginBottom: 14 }}>🛒</div>
-            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: 6 }}>
+            <p style={{ fontFamily: "'Hammersmith One', sans-serif", fontSize: 18, fontWeight: 700, color: "var(--text)", marginBottom: 6 }}>
               Keranjang kosong
             </p>
             <p style={{ fontSize: 14, marginBottom: 20 }}>Yuk pilih menu dulu!</p>
@@ -114,7 +114,7 @@ export default function CartPage() {
               style={{
                 padding: "10px 24px", background: "var(--accent)", color: "white",
                 border: "none", borderRadius: 999, cursor: "pointer",
-                fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: 500,
+                fontFamily: "'Poppins', sans-serif", fontSize: 14, fontWeight: 500,
               }}
             >
               Lihat Menu
@@ -152,7 +152,7 @@ export default function CartPage() {
             {/* Nama + harga + delete — tengah */}
             <div style={{ flex: 1, minWidth: 0 }}>
               <p style={{
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: "'Hammersmith One', sans-serif",
                 fontSize: 14, fontWeight: 700,
                 color: "var(--text)", marginBottom: 4,
                 whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
@@ -274,7 +274,7 @@ export default function CartPage() {
                     background: isLoading ? "#9CA3AF" : "var(--accent)",
                     color: "#FAF7F2",
                     border: "none", borderRadius: "var(--radius)",
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Poppins', sans-serif",
                     fontSize: 15, fontWeight: 500, cursor: isLoading ? "not-allowed" : "pointer",
                     display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
                 }}

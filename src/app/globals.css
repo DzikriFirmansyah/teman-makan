@@ -4,6 +4,7 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Poppins:wght@300;400;500;600&display=swap');
 
 :root {
   --bg: #F5F9FF;              /* Putih kebiruan — latar utama */
@@ -12,6 +13,8 @@
   --accent: #00AEFF;          /* Biru cerah — tombol, harga, CTA */
   --accent-light: #E0F4FF;    /* Biru muda — background badge/tag */
   --accent-mid: #33BFFF;      /* Biru medium — hover, variasi */
+  --font-display: 'Hammersmith One', sans-serif;  /* judul/header */
+  --font-body: 'Poppins', sans-serif;             /* body text */
   --text: #1A1A1A;            /* Hitam lembut — teks utama */
   --text-muted: #6B7280;      /* Abu sedang — teks deskripsi */
   --text-light: #9CA3AF;      /* Abu terang — placeholder, hint */
@@ -32,7 +35,7 @@
 html,
 body {
   background: var(--bg);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: var(--text);
   -webkit-font-smoothing: antialiased;
 }

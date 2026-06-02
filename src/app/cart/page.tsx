@@ -207,13 +207,7 @@ export default function CartPage() {
               alignItems: "center", gap: 6, flexShrink: 0,
             }}>
               <button
-                onClick={() => {
-                    if (cartItem.qty === 1) {
-                      setConfirmMinus(cartItem.menuItem.id);
-                    } else {
-                      updateQty(cartItem.menuItem.id, cartItem.qty - 1);
-                    }
-                  }}
+                onClick={() => updateQty(cartItem.menuItem.id, cartItem.qty + 1)}
                 style={{
                   width: 28, height: 28, borderRadius: "50%",
                   background: "var(--bg)", border: "1px solid var(--border)",
@@ -231,7 +225,13 @@ export default function CartPage() {
               </span>
 
               <button
-                onClick={() => updateQty(cartItem.menuItem.id, cartItem.qty - 1)}
+                onClick={() => {
+                    if (cartItem.qty === 1) {
+                      setConfirmMinus(cartItem.menuItem.id);
+                    } else {
+                      updateQty(cartItem.menuItem.id, cartItem.qty - 1);
+                    }
+                  }}
                 style={{
                   width: 28, height: 28, borderRadius: "50%",
                   background: "var(--bg)", border: "1px solid var(--border)",

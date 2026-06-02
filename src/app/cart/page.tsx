@@ -14,6 +14,8 @@ export default function CartPage() {
   const router = useRouter();
   const { items, subtotal, tax, serviceFee, total, updateQty, removeItem, formatRupiah, tableNumber } = useCart();
   const [isLoading, setIsLoading] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
+  const [confirmMinus, setConfirmMinus] = useState<string | null>(null);
   const handleOrder = async () => {
       setIsLoading(true);
       try {
@@ -179,7 +181,7 @@ export default function CartPage() {
 
               {/* Delete button */}
               <button
-                onClick={() => removeItem(cartItem.menuItem.id)}
+                onClick={() => setConfirmDelete(cartItem.menuItem.id)}
                 style={{
                   display: "flex", alignItems: "center", gap: 4,
                   background: "none", border: "none", cursor: "pointer",
@@ -205,7 +207,13 @@ export default function CartPage() {
               alignItems: "center", gap: 6, flexShrink: 0,
             }}>
               <button
-                onClick={() => updateQty(cartItem.menuItem.id, cartItem.qty + 1)}
+                onClick={() => {
+                    if (cartItem.qty === 1) {
+                      setConfirmMinus(cartItem.menuItem.id);
+                    } else {
+                      updateQty(cartItem.menuItem.id, cartItem.qty - 1);
+                    }
+                  }}
                 style={{
                   width: 28, height: 28, borderRadius: "50%",
                   background: "var(--bg)", border: "1px solid var(--border)",
@@ -297,6 +305,129 @@ export default function CartPage() {
       )}
 
       <BottomNav />
+
+      {/* POP UP KONFIRMASI DELETE */}
+        {confirmDelete && (
+            <div
+            onClick={() => setConfirmDelete(null)}
+            style={{
+                position: "fixed", top: 0, left: 0, right: 0, bottom: 0,
+                background: "rgba(0,0,0,0.5)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                zIndex: 999,
+            }}
+            >
+            <div
+                onClick={(e) => e.stopPropagation()}
+                style={{
+                background: "var(--bg-card)", borderRadius: 20,
+                padding: "28px 24px", maxWidth: 300, width: "85%",
+                textAlign: "center",
+                boxShadow: "0 8px 40px rgba(0,0,0,0.18)",
+                animation: "bounceIn 0.3s ease forwards",
+                }}
+            >
+                <div style={{ fontSize: 40, marginBottom: 12 }}>🗑️</div>
+                <p style={{ fontFamily: "'Hammersmith One', sans-serif", fontSize: 16, fontWeight: 700, color: "var(--text)", marginBottom: 8 }}>
+                Hapus Item?
+                </p>
+                <p style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 20 }}>
+                Apakah kamu yakin ingin menghapus item ini dari keranjang?
+                </p>
+                <div style={{ display: "flex", gap: 10 }}>
+                <button
+                    onClick={() => setConfirmDelete(null)}
+                    style={{
+                    flex: 1, padding: "10px 0",
+                    background: "var(--bg)", border: "1px solid var(--border)",
+                    borderRadius: 12, fontSize: 14, fontWeight: 500,
+                    cursor: "pointer", color: "var(--text)",
+                    fontFamily: "'Poppins', sans-serif",
+                    }}
+                >
+                    Tidak
+                </button>
+                <button
+                    onClick={() => {
+                    removeItem(confirmDelete);
+                    setConfirmDelete(null);
+                    }}
+                    style={{
+                    flex: 1, padding: "10px 0",
+                    background: "#EF4444", border: "none",
+                    borderRadius: 12, fontSize: 14, fontWeight: 500,
+                    cursor: "pointer", color: "white",
+                    fontFamily: "'Poppins', sans-serif",
+                    }}
+                >
+                    Ya, Hapus
+                </button>
+                </div>
+            </div>
+            </div>
+        )}
+
+        {/* POP UP KONFIRMASI MINUS (QTY = 1) */}
+        {confirmMinus && (
+            <div
+            onClick={() => setConfirmMinus(null)}
+            style={{
+                position: "fixed", top: 0, left: 0, right: 0, bottom: 0,
+                background: "rgba(0,0,0,0.5)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                zIndex: 999,
+            }}
+            >
+            <div
+                onClick={(e) => e.stopPropagation()}
+                style={{
+                background: "var(--bg-card)", borderRadius: 20,
+                padding: "28px 24px", maxWidth: 300, width: "85%",
+                textAlign: "center",
+                boxShadow: "0 8px 40px rgba(0,0,0,0.18)",
+                animation: "bounceIn 0.3s ease forwards",
+                }}
+            >
+                <div style={{ fontSize: 40, marginBottom: 12 }}>⚠️</div>
+                <p style={{ fontFamily: "'Hammersmith One', sans-serif", fontSize: 16, fontWeight: 700, color: "var(--text)", marginBottom: 8 }}>
+                Hapus Item?
+                </p>
+                <p style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 20 }}>
+                Jumlah sudah minimum. Mengurangi akan menghapus item ini dari keranjang.
+                </p>
+                <div style={{ display: "flex", gap: 10 }}>
+                <button
+                    onClick={() => setConfirmMinus(null)}
+                    style={{
+                    flex: 1, padding: "10px 0",
+                    background: "var(--bg)", border: "1px solid var(--border)",
+                    borderRadius: 12, fontSize: 14, fontWeight: 500,
+                    cursor: "pointer", color: "var(--text)",
+                    fontFamily: "'Poppins', sans-serif",
+                    }}
+                >
+                    Tidak
+                </button>
+                <button
+                    onClick={() => {
+                    removeItem(confirmMinus);
+                    setConfirmMinus(null);
+                    }}
+                    style={{
+                    flex: 1, padding: "10px 0",
+                    background: "#EF4444", border: "none",
+                    borderRadius: 12, fontSize: 14, fontWeight: 500,
+                    cursor: "pointer", color: "white",
+                    fontFamily: "'Poppins', sans-serif",
+                    }}
+                >
+                    Ya, Hapus
+                </button>
+                </div>
+            </div>
+            </div>
+        )}
+
     </main>
   );
 }
